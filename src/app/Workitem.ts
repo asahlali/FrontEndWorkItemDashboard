@@ -1,11 +1,12 @@
 export class Workitem{
     
     constructor(public identifier:number,
-                public title:string,
-                public Status:string,
-                public GBU:string,
-                public Organisation:string,
-                public Project:string,
-                public Ownedby:string,
-                public DeliveryTeamInCharge:string){}
+                public summary:string,
+                public status:string,
+                public gbu:string,
+                public organisation:string,
+                public project:string,
+                public ownedby:string,
+                public description:string,
+                public deliveryTeamInCharge:string){}
 }

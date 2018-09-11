@@ -1,27 +1,321 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th scop="col">identifier</th>
-        <th scop="col">title</th>
-        <th scop="col">Status</th>
-        <th scop="col">GBU</th>
-        <th scop="col">Organisation</th>
-        <th scop="col">Project</th>
-        <th scop="col">Ownedby</th>
-        <th scop="col">DeliveryTeamInCharge</th>
-      </tr>
-    </thead>
-
-    <tbody>
-  <tr *ngFor="let x of workitems">
-      <td>{{x.identifier}}</td>
-      <td>{{x.title}}</td>
-      <td>{{x.Status}}</td>
-      <td>{{x.GBU}}</td>
-      <td>{{x.Organisation}}</td>
-      <td>{{x.Project}}</td>
-      <td>{{x.Ownedby}}</td>
-      <td>{{x.DeliveryTeamInCharge}}</td>
-  </tr>
-</tbody>
-</table>
+<h3>Workitem</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scop="col">identifier</th>
+                <th scop="col">title</th>
+                <th scop="col">Status</th>
+                <th scop="col">GBU</th>
+                <th scop="col">Organisation</th>
+                <!-- <th scop="col">Project</th>
+                <th scop="col">Ownedby</th>
+                <th scop="col">DeliveryTeamInCharge</th> -->
+              </tr>
+            </thead>
+        
+            <tbody>
+          <tr *ngFor="let x of workitems">
+              <td>{{x.identifier}}</td>
+              <td>{{x.summary}}</td>
+              <td>{{x.status}}</td>
+              <td>{{x.gbu}}</td>
+              <td>{{x.organisation}}</td>
+              <!-- <td>{{x.project}}</td>
+              <td>{{x.ownedby}}</td>
+              <td>{{x.DeliveryTeamInCharge}}</td> -->
+          </tr>
+        </tbody>
+        </table>
+    </div>
+    <div class="col-lg-4">
+        <form [formGroup]="workItemForm">
+         <div class="form-group">
+            <label for="formGroupExampleInput">Summary</label>
+            <input type="text" class="form-control" formControlName="summary" placeholder="Title">
+          </div>
+          <div class="alert alert-danger" *ngIf="workItemForm.controls['summary'].invalid && (workItemForm.controls['summary'].touched || workItemForm.controls['summary'].dirty)" >
+              Summary is mondatory
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1" >GBU</label>
+            <select class="form-control" formControlName="gbu">
+              <option>GBU France</option>
+              <option>GBU MEA</option>
+              <option>GBU SMC</option>
+              <option>GDC India</option>
+            </select>
+          </div>
+          <div class="form-group">
+              <label for="exampleFormControlSelect1">Owned by</label>
+              <select class="form-control" formControlName="ownedby">
+                  <option>Unassigned</option>
+                  <option>Abdellatif SAHLALI</option>
+                  <option>Amine Tazlaft</option>
+                  <option>Danny Thakur</option>
+                  <option>Digvijay Mendgudli</option>
+                  <option>Geetanjali Shilpee</option>
+                  <option>Hassan TLEMCANI</option>
+                  <option>Komal Acharekar</option>
+                  <option>MansoorAli Tahasildar</option>
+                  <option>Meriem EL FEDYL</option>
+                  <option>Mohamed Amine MIHRAJE</option>
+                  <option>Mounia AMGHAR</option>
+                  <option>Nada HABIBI</option>
+                  <option>NAWAL JBILI</option>
+                  <option>Poonam Thormote</option>
+                  <option>Priyanka Sapate</option>
+                  <option>Renuka Kulkarni</option>
+                  <option>Samiksha Kide</option>
+                  <option>Swaminathan M</option>
+                  <option>Varsha Shetye</option>
+                  <option>Viswaja Neeluri</option>
+              </select>
+            </div>
+          <div class="form-group">
+              <label for="exampleFormControlSelect1">Status</label>
+              <select class="form-control" formControlName="status">
+                  <option>In Production</option>
+                  <option>On Hold</option>
+                  <option>In Deployment</option>
+                  <option>To be started</option>
+                  <option>Cancelled</option>
+                  <option>In Design</option>
+                  <option>In Development</option>
+                  <option>In Testing</option>
+                  <option>Ready for development</option>
+                  <option>To be Assessed</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Delivery Team in charge</label>
+                <select class="form-control" formControlName="deliveryTeamInCharge">
+                    <option>AURO Team</option>
+                    <option>CEE Team</option>
+                    <option>FR Atos Worldgrid</option>
+                    <option>FR Equipe ADM Others</option>
+                    <option>FR Equipe LDC Bezons</option>
+                    <option>FR Equipe LDC Bordeaux</option>
+                    <option>FR Equipe LDC Casablanca</option>
+                    <option>FR Equipe LDC Nantes</option>
+                    <option>FR Equipe LDC Rennes</option>
+                    <option>FR Equipe PEO Sénégal</option>
+                    <option>FR Equipe PMO Maroc</option>
+                    <option>FR Equipe Practice Digital</option>
+                    <option>FR Equipe Practice FS</option>
+                    <option>FR Equipe Practice Telco</option>
+                    <option>FR Factory UiPath</option>
+                </select>
+              </div> 
+          <div class="form-group">
+              <label for="exampleFormControlSelect1">Project</label>
+              <select class="form-control" formControlName="project">
+                  <option>UK&I Health - NHSS Support</option>
+                  <option>UK&I Health - DOH</option>
+                  <option>UK&I Health - OH</option>
+                  <option>UK&I Health - PIP</option>
+                  <option>UK&I Gov LDC & Oracle - Engage</option>
+                  <option>UK&I Gov LDC & Oracle - Beeston</option>
+                  <option>UK&I Gov LDC & Oracle - Natural England</option>
+                  <option>UK&I Gov LDC & Oracle - Oracle</option>
+                  <option>UK&I Private sector - BBC</option>
+                  <option>UK&I Private sector - Capita</option>
+                  <option>UK&I Private sector - AM Private and Gov Rest</option>
+                  <option>UK&I Private sector - MunichRe</option>
+                  <option>UK&I Private sector - Private North East</option>
+                  <option>UK&I NS&I - NS&I Support</option>
+                  <option>UK&I SAP - SAP</option>
+                  <option>UK&I Internal -  Sales Operations</option>
+                  <option>UK&I Internal - Sales Operations</option>
+                  <option>UK&I Internal - Finance</option>
+                  <option>UK&I Internal - HR & Finance</option>
+                  <option>UK&I Internal - PMO</option>
+                  <option>UK&I Public sector - Welsh Government</option>
+                  <option>UK&I Public sector - DVSA</option>
+                  <option>UK&I Public sector - Post Office</option>
+                  <option>UK&I Public sector - SSA</option>
+                  <option>IBERIA Atos - Airbus ECM</option>
+                  <option>IBERIA Atos - IFRSkeyes</option>
+                  <option>IN GDC MRT - BMW COFIS</option>
+                  <option>IN GDC MRT - Renault</option>
+                  <option>IN GDC MRT - XEROX</option>
+                  <option>IN GDC MRT - Karstadt</option>
+                  <option>IN GDC MRT - RENAULT</option>
+                  <option>IN GDC MRT - Sanofi Optimus</option>
+                  <option>IN GDC MRT - UK AM Apps</option>
+                  <option>IN GDC MRT - Volkswagen NAM</option>
+                  <option>IN GDC MRT - P&G</option>
+                  <option>IN GDC MRT - Sanofi Oktavis</option>
+                  <option>IN GDC MRT - Airbus ECM</option>
+                  <option>IN GDC MRT - STORA</option>
+                  <option>IN GDC MRT - AHOLD</option>
+                  <option>IN GDC MRT - Thyssen</option>
+                  <option>IN GDC MRT - SYMRISE</option>
+                  <option>IN GDC Siemens - TOPAS SAM</option>
+                  <option>IN GDC Siemens - TOPAS NWE</option>
+                  <option>IN GDC Siemens - TOPAS SWE</option>
+                  <option>IN GDC SIEMENS  GS IT ED G-THAILAND</option>
+                  <option>IN GDC Siemens - TripleS</option>
+                  <option>IN GDC Siemens - TOPAS APAC</option>
+                  <option>IN GDC Siemens - Siemens ECM</option>
+                  <option>In GDC Siemens -TOPAS CEE</option>
+                  <option>IN GDC TMT - DU</option>
+                  <option>IN GDC TMT - NOKIA</option>
+                  <option>IN GDC TMT - KPN</option>
+                  <option>IN GDC Internal - COE Practice</option>
+                  <option>IN GDC Internal - India PMO</option>
+                  <option>IN GDC Internal - GIT Nessie</option>
+                  <option>IN GDC Internal - GIT CnP</option>
+                  <option>IN GDC Internal - AURO Internal</option>
+                  <option>CEE RU - Transversal</option>
+                  <option>CEE TUR - NATO</option>
+                  <option>CEE TUR - Archelik</option>
+                  <option>CEE TUR - Transversal</option>
+                  <option>CEE TUR - Energy&Utilities</option>
+                  <option>CEE AU - AT&S</option>
+                  <option>CEE AU - Transversal</option>
+                  <option>CEE PO - Transversal</option>
+                  <option>CEE IT - Transversal</option>
+                  <option>CEE - Mercedes</option>
+                  <option>CEE IT - A2A</option>
+                  <option>CEE IT - ENEL</option>
+                  <option>CEE IT - INPS</option>
+                  <option>CEE IT - APTAR</option>
+                  <option>CEE - Transversal</option>
+                  <option>DE - TripleS</option>
+                  <option>DE - WorldLine</option>
+                  <option>DE - Karstadt</option>
+                  <option>DE - Central Function</option>
+                  <option>DE - WWN</option>
+                  <option>DE - Thyssen</option>
+                  <option>DE - BP Europa AM</option>
+                  <option>DE - Siemens OneSRM</option>
+                  <option>DE - Source2Contract</option>
+                  <option>DE - BMW-COFIS</option>
+                  <option>DE - Siemens ECM</option>
+                  <option>FR Transversal - Structure LDC</option>
+                  <option>FR Transversal - Structure Globale</option>
+                  <option>FR Transversal - Cellule PMO</option>
+                  <option>FR LDC BDX - SGD TMA</option>
+                  <option>FR LDC BDX - BOLYD</option>
+                  <option>FR LDC BDX - CNSA</option>
+                  <option>FR LDC BDX - HERMANN</option>
+                  <option>FR LDC BDX - KILOUTOU</option>
+                  <option>FR LDC BDX - LBP CDM</option>
+                  <option>FR LDC BDX - LBP MDV</option>
+                  <option>FR LDC BDX - LBP SID</option>
+                  <option>FR LDC BDX - WEB MEN</option>
+                  <option>FR LDC BDX - RENAULT</option>
+                  <option>FR LDC BDX - tous projets SAP</option>
+                  <option>FR LDC BDX - CNES</option>
+                  <option>FR LDC BDX - GRTGAZ</option>
+                  <option>FR LDC BDX - MINDEF SIRH</option>
+                  <option>FR LDC BDX - ACCOR</option>
+                  <option>FR LDC BDX - PME_Bytel</option>
+                  <option>FR LDC Bezons - ANTS</option>
+                  <option>FR LDC Bezons - ANTS /TMA SIV Marché 2013 0163</option>
+                  <option>FR LDC Bezons - CCIR TMA SAP CONFIANCE</option>
+                  <option>FR LDC Bezons - TMA SAP BI</option>
+                  <option>FR LDC Bezons - Total Unisol</option>
+                  <option>FR LDC Bezons - Transverse</option>
+                  <option>FR LDC Bezons - BIOGARAN TMA SETTING</option>
+                  <option>FR LDC Bezons - SIGIF</option>
+                  <option>FR LDC Bezons - IBFS OUTSOURCING TMA</option>
+                  <option>FR LDC Bezons - TMA Mairie de Paris</option>
+                  <option>FR LDC Bezons - ORANGE BI</option>
+                  <option>FR LDC Bezons - ADM Change</option>
+                  <option>FR LDC Bezons - PWC Prest AT</option>
+                  <option>FR LDC Bezons - TMA Store Electronic Systems</option>
+                  <option>FR LDC Bezons - TMA INDIA LOT 1</option>
+                  <option>FR LDC Bezons - GRDF Projet SOFIT</option>
+                  <option>FR LDC Rennes - TMA SCORE</option>
+                  <option>FR LDC Rennes - ALD</option>
+                  <option>FR LDC Rennes - BOP MOOSE</option>
+                  <option>FR LDC Rennes - RCI</option>
+                  <option>FR LDC Rennes - BIL projet</option>
+                  <option>FR LDC Rennes - Keolis Calcia PwC</option>
+                  <option>FR LDC Rennes - MSS projet</option>
+                  <option>FR LDC Rennes - OCFRDP</option>
+                  <option>FR LDC Rennes - Novaforge</option>
+                  <option>FR LDC Rennes - LUTECE</option>
+                  <option>FR LDC Rennes - OCA</option>
+                  <option>FR LDC Rennes - TMA Inca</option>
+                  <option>FR LDC Rennes - SRA</option>
+                  <option>FR LDC Rennes - Transverse</option>
+                  <option>FR LDC Rennes - Renault</option>
+                  <option>FR AWG - EDF641_NEW_STM_LOT_C</option>
+                  <option>FR AWG - 4LY655_Lynx URM V6_FR4LY655W22</option>
+                  <option>FR AWG - EDF464 _ EDF - M2C SII_FREDF464W25</option>
+                  <option>FR AWG - 4LY664 _ LYNX - SEFA_FR4LY664W22</option>
+                  <option>FR AWG - Connecteur ALM Gold</option>
+                  <option>FR AWG - EDF471_Coeur-SA_DISCO_LOT_B</option>
+                  <option>FR AWG - Transverse</option>
+                  <option>FR AWG - RTE CANOE</option>
+                  <option>FR AWG - SDIN</option>
+                  <option>FR AWG - 4LY647 _ Lynx GESA SAMI_FR4LY647W22</option>
+                  <option>FR AWG - 4LY439 _ LYNX - CEGEL4 Sonzier_FR4LY439W23</option>
+                  <option>FR AWG - 4LY553 _ LYNX - CDC5_FR4LY553W22</option>
+                  <option>FR AWG - 4LY447 _ LYNX - Maintenance_FR4LY447W22</option>
+                  <option>FR AWG - 4LY652_Lynx SIL CEPP3_FR4LY652W22</option>
+                  <option>FR AWG - STM</option>
+                  <option>FR AWG - 4GR616 _ Atos- China - Change for end users_FR4GR616W25</option>
+                  <option>FR AWG - MDM</option>
+                  <option>FR LDC Casa - DARTY BDX</option>
+                  <option>FR LDC Casa - La Poste TMA Colis</option>
+                  <option>FR LDC Casa - SOGECAP</option>
+                  <option>FR LDC Casa - FNAC</option>
+                  <option>FR LDC Casa - Auchan</option>
+                  <option>FR LDC Casa - DARTY</option>
+                  <option>FR LDC Casa - AREVA</option>
+                  <option>FR LDC Casa - ALLIANZ</option>
+                  <option>FR LDC Casa - FNAC BPO</option>
+                  <option>FR LDC Casa - RENAULT</option>
+                  <option>FR LDC Casa - IBFS</option>
+                  <option>FR LDC Casa - Orange BI</option>
+                  <option>FR LDC Casa - Transverse</option>
+                  <option>FR LDC Casa - La Poste MESSI V2</option>
+                  <option>FR LDC Nantes - CNP</option>
+                  <option>FR LDC Nantes - TMA La Poste</option>
+                  <option>FR LDC Nantes - SIEMENS</option>
+                  <option>FR LDC Nantes - MAE</option>
+                  <option>FR LDC Nantes - BDRP</option>
+                  <option>FR LDC Nantes - GRDF</option>
+                  <option>FR LDC Nantes - PMO</option>
+                  <option>FR LDC Nantes - INDUS</option>
+                  <option>FR LDC Nantes - Transverse</option>
+                  <option>FR LDC Nantes - VEOLIA</option>
+                  <option>FR LDC Nantes - CNAMTS TMA5</option>
+                  <option>FR Others ADM - Sanofi Oktavis</option>
+                  <option>FR Others ADM - IFRSkeyes</option>
+                  <option>FR Digital - Transverse</option>
+                  <option>FR Digital - Airbus ECM</option>
+                  <option>FR Digital - BOUYGES TELECOM OPAL</option>
+                  <option>FR Digital - AFKLM</option>
+                  <option>FR Digital - Transverse TELCO</option>
+                  <option>FR Digital - SFR_MCO</option>
+                  <option>FR Digital - Orange OBS Billing</option>
+                  <option>FR Digital - SNCF MISTRAL</option>
+                  <option>FR EPS - Transverse</option>
+                  <option>FR EPS - Apollo</option>
+                  <option>FR EPS - Diamis</option>
+                  <option>FR EPS - LCH Clearnet</option>
+                  <option>FR EPS - P2F et BFI</option>
+                  <option>FR EPS - COFACE</option>
+                  <option>FR EPS - BPI</option>
+                  <option>FR MRTPH - Transverse</option>
+                  <option>FR MRTPH - Projet 1</option>
+                  <option>FR MRTPH - Projet 2
+                  <option>FR MRTPH - Projet 3
+              </select>
+            </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Target Situation</label>
+            <textarea class="form-control" formControlName="description" rows="3"></textarea>
+          </div>
+          <button type="button" class="btn btn-primary btn-lg btn-block" [disabled]="workItemForm.invalid ||  workItemForm.prestine">Create Ticket</button>
+        </form>
+    </div>
+  </div>
+</div>

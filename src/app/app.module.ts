@@ -10,6 +10,8 @@ import { ContentComponent } from './content/content.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app.routing.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClient } from 'selenium-webdriver/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AppRoutingModule } from './app.routing.module';
     NotFoundComponent
   ],
   imports: [
-    BrowserModule,
+   BrowserModule,
+   ReactiveFormsModule,
+   FormsModule,
    AppRoutingModule
   ],
   providers: [WorkitemService],
