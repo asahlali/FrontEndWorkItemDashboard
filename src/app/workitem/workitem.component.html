@@ -1,0 +1,27 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scop="col">identifier</th>
+        <th scop="col">title</th>
+        <th scop="col">Status</th>
+        <th scop="col">GBU</th>
+        <th scop="col">Organisation</th>
+        <th scop="col">Project</th>
+        <th scop="col">Ownedby</th>
+        <th scop="col">DeliveryTeamInCharge</th>
+      </tr>
+    </thead>
+
+    <tbody>
+  <tr *ngFor="let x of workitems">
+      <td>{{x.identifier}}</td>
+      <td>{{x.title}}</td>
+      <td>{{x.Status}}</td>
+      <td>{{x.GBU}}</td>
+      <td>{{x.Organisation}}</td>
+      <td>{{x.Project}}</td>
+      <td>{{x.Ownedby}}</td>
+      <td>{{x.DeliveryTeamInCharge}}</td>
+  </tr>
+</tbody>
+</table>
