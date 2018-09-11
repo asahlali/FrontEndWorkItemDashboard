@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'FrontEndWorkItemDashboard';
+  ShowHideSidebar: boolean =false
+
+  onshowSideBarChange(ShowHideSidebar){
+    console.log("Click"+ShowHideSidebar);
+    
+    this.ShowHideSidebar = ShowHideSidebar;
+  }
 }
