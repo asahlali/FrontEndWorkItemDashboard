@@ -1,15 +1,17 @@
 <h3>Workitem</h3>
+<h3>Total Workitem: {{workitems.workitems.length}}</h3>
 <div class="container">
   <div class="row">
     <div class="col-lg-8">
+    <div *ngIf="workitems; else elseBlock">
         <table class="table table-hover">
             <thead>
               <tr>
                 <th scop="col">identifier</th>
                 <th scop="col">title</th>
-                <th scop="col">Status</th>
-                <th scop="col">GBU</th>
-                <th scop="col">Organisation</th>
+                <th scop="col">timeSpent</th>
+                <th scop="col">category</th>
+                <th scop="col">owner</th>
                 <!-- <th scop="col">Project</th>
                 <th scop="col">Ownedby</th>
                 <th scop="col">DeliveryTeamInCharge</th> -->
@@ -17,18 +19,20 @@
             </thead>
         
             <tbody>
-          <tr *ngFor="let x of workitems">
-              <td>{{x.identifier}}</td>
-              <td>{{x.summary}}</td>
-              <td>{{x.status}}</td>
-              <td>{{x.gbu}}</td>
-              <td>{{x.organisation}}</td>
+          <tr *ngFor="let x of workitems.workitems">
+              <td>{{x.id}}</td>
+              <td>{{x.summary}}</td>  
+              <td>{{x.timeSpent}}</td>
+              <td>{{x.category.name}}</td>
+              <td>{{x.owner.name}}</td>
               <!-- <td>{{x.project}}</td>
               <td>{{x.ownedby}}</td>
-              <td>{{x.DeliveryTeamInCharge}}</td> -->
+              <td>{{x.DeliveryTeamInCharge}}</td>-->
           </tr>
         </tbody>
         </table>
+    </div>
+    <ng-template #elseBlock>Loading...</ng-template>
     </div>
     <div class="col-lg-4">
         <form [formGroup]="workItemForm">

@@ -11,8 +11,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app.routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClient } from 'selenium-webdriver/http';
-
+import { WorkitemServiceI } from './workitem/workitem.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,9 +27,10 @@ import { HttpClient } from 'selenium-webdriver/http';
    BrowserModule,
    ReactiveFormsModule,
    FormsModule,
-   AppRoutingModule
+   AppRoutingModule,
+   HttpClientModule
   ],
-  providers: [WorkitemService],
+  providers: [WorkitemService,WorkitemServiceI],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

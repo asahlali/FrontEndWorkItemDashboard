@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Workitem } from '../Workitem';
-import { WorkitemService } from '../workitem.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { WorkitemServiceI } from './workitem.service';
+import { WorkitemAuro } from '../workitem-auro';
 
 @Component({
   selector: 'app-workitem',
@@ -10,21 +10,21 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class WorkitemComponent implements OnInit {
 
-  workitems:Workitem[]=[];
+  workitems:WorkitemAuro[]=[];
   //ajouter un WorkItem
   workItemForm:FormGroup;
-  constructor(private ws:WorkitemService,
+  constructor(private ws:WorkitemServiceI,
               private fb:FormBuilder) {
   this.workItemForm = this.fb.group({
-    identifier:['',Validators.required],
+    identifier:'',
     summary:['',Validators.required],
-    status:['',Validators.required],
-    gbu:['',Validators.required],
-    organisation:['',Validators.required],
-    project:['',Validators.required],
-    ownedby:['',Validators.required],
-    deliveryTeamInCharge:['',Validators.required],
-    description:['',Validators.required],
+    status:'',
+    gbu:'',
+    organisation:'',
+    project:'',
+    ownedby:'',
+    deliveryTeamInCharge:'',
+    description:'',
 
 
    
@@ -37,7 +37,18 @@ export class WorkitemComponent implements OnInit {
 
 
   ngOnInit() {
-    this.workitems = this.ws.getWorkitem();
+    // this.workitems = this.ws.getProduits();
+    this.loadWorkItem();
+  }
+  loadWorkItem(){
+    this.ws.getProduits().subscribe(
+      data => {this.workitems = data;console.log(this.workitems);
+      },
+      error => {console.log('An error was occured.')
+      },
+      ()=>{console.log('loding produits was done.');
+      }
+    );
   }
 
 }
